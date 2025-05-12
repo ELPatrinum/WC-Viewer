@@ -59,8 +59,6 @@ python chat_viewer.py /path/to/chat/folder --me "Your Name"
 
 ---
 
----
-
 ![Screenshot 2025-05-12 094258](https://github.com/user-attachments/assets/7e46b9a1-b4e4-4c6a-a50e-68437f97211c)
 
 ---
