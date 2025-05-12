@@ -10,7 +10,7 @@ from PySide6.QtWidgets import (
 from PySide6.QtGui import QPixmap, QDesktopServices, QPalette, QColor
 from PySide6.QtCore import Qt, QUrl, QTimer, QEvent
 
-# Constants
+
 BATCH_SIZE = 50
 MAX_VISIBLE = 200
 VIDEO_EXT = {'.mp4', '.mov', '.avi', '.mkv'}
@@ -335,7 +335,7 @@ def main():
         sys.exit(1)
     chat_file = os.path.join(args.folder, txt_files[-1])
 
-    # --- Loading Indicator ---
+    
     def show_loading_bar(progress, total):
         bar_length = 40
         filled_length = int(bar_length * progress // total)
