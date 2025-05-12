@@ -45,7 +45,7 @@ pip install PySide6 pandas moviepy
 
 
 ```bash
-python chat_viewer.py /path/to/chat/folder --me "Your Name"
+python vchat.py /path/to/chat/folder --me "Your Name"
 ```
 
 * `/path/to/chat/folder`: Directory containing your exported WhatsApp `.txt` chat file and associated media.
