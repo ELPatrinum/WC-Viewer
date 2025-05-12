@@ -38,6 +38,12 @@ pip install PySide6 pandas moviepy
 
 ## Usage
 
+
+![Screenshot 2025-05-12 094027](https://github.com/user-attachments/assets/4d462c68-638f-4290-8832-ff7607d03153)
+
+
+
+
 ```bash
 python chat_viewer.py /path/to/chat/folder --me "Your Name"
 ```
@@ -50,6 +56,12 @@ python chat_viewer.py /path/to/chat/folder --me "Your Name"
 * **F11**: Toggle fullscreen mode.
 * **ESC**: Exit fullscreen mode.
 * **Load More Button**: Load older messages manually.
+
+---
+
+---
+
+![Screenshot 2025-05-12 094258](https://github.com/user-attachments/assets/7e46b9a1-b4e4-4c6a-a50e-68437f97211c)
 
 ---
 
