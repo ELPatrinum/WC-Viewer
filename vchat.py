@@ -1,7 +1,3 @@
-#!/usr/bin/env python3
-"""
-WhatsApp Chat Viewer Using PySide6 - Improved UI, Full Messages, Precise Scroll Position (Pruning Aware), Smaller Media, Corrected Event Filter, Terminal Loading Bar with Clean Exit, and Video Thumbnails
-"""
 import os
 import sys
 import re
@@ -22,9 +18,9 @@ AUDIO_EXT = {'.opus', '.mp3', '.wav'}
 IMAGE_EXT = {'.jpg', '.jpeg', '.png', '.webp', '.gif'}
 
 
-# --- Helper Functions ---
+
 def parse_chat_gen(file_path):
-    """Generator yielding parsed messages as dicts, handling long lines."""
+    
     pattern = re.compile(
         r'^\[(\d{1,2}/\d{1,2}/\d{2,4}),\s*(\d{1,2}:\d{2}(?::\d{2})?\s*(?:AM|PM)?)\]\s*(.*?):\s?(.*)$',
         re.IGNORECASE
@@ -59,7 +55,7 @@ def open_media(path):
     QDesktopServices.openUrl(QUrl.fromLocalFile(path))
 
 
-# --- Main Application Class ---
+
 class ChatViewer(QMainWindow):
     def __init__(self, chat_file, me_name=None, initial_messages=None):
         super().__init__()
@@ -67,9 +63,9 @@ class ChatViewer(QMainWindow):
         self.setWindowTitle('WhatsApp Chat Viewer')
         self.resize(600, 800)
 
-        # Improved color scheme for better visibility
+        
         palette = self.palette()
-        palette.setColor(QPalette.WindowText, QColor(0, 0, 0))  # Black text
+        palette.setColor(QPalette.WindowText, QColor(0, 0, 0))
         self.setPalette(palette)
 
         if initial_messages is not None:
@@ -87,19 +83,19 @@ class ChatViewer(QMainWindow):
         central = QWidget()
         self.setCentralWidget(central)
         layout = QVBoxLayout(central)
-        layout.setContentsMargins(0, 0, 0, 0)  # Remove default margins
-        layout.setSpacing(0)  # No spacing between widgets
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
 
         self.scroll_area = QScrollArea()
         self.scroll_area.setWidgetResizable(True)
-        self.scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn) # Ensure scrollbar is always visible
+        self.scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         layout.addWidget(self.scroll_area)
 
         self.scroll_content = QWidget()
         self.scroll_layout = QVBoxLayout(self.scroll_content)
         self.scroll_layout.setAlignment(Qt.AlignTop)
-        self.scroll_layout.setContentsMargins(10, 10, 10, 10) # Add some padding inside the scroll area
-        self.scroll_layout.setSpacing(8) # Add spacing between messages
+        self.scroll_layout.setContentsMargins(10, 10, 10, 10)
+        self.scroll_layout.setSpacing(8)
         self.scroll_area.setWidget(self.scroll_content)
 
         self.load_button = QPushButton('Load more')
@@ -109,7 +105,7 @@ class ChatViewer(QMainWindow):
         self.fullscreen = False
         self.scroll_area.installEventFilter(self)
 
-        # Initial load after show to keep UI responsive
+       
         QTimer.singleShot(0, self._load_batch)
 
     def eventFilter(self, obj, event):
@@ -150,7 +146,7 @@ class ChatViewer(QMainWindow):
             self.load_button.setEnabled(False)
             return
 
-        # Store the current scroll position before loading more messages
+        
         scroll_bar = self.scroll_area.verticalScrollBar()
         self._scroll_position_before_load = scroll_bar.value()
         max_scroll_value_before_load = scroll_bar.maximum()
@@ -178,7 +174,7 @@ class ChatViewer(QMainWindow):
             bubble.setStyleSheet(f"background: {bubble_bg}; padding: 8px; margin-bottom: 8px; border-radius: 10px; border: 1px solid #c0c0c0;")
             bubble_layout = QVBoxLayout(bubble)
             bubble_layout.setContentsMargins(8, 6, 8, 6)
-            bubble_layout.setSizeConstraint(QVBoxLayout.SetDefaultConstraint) # Allow vertical expansion of content
+            bubble_layout.setSizeConstraint(QVBoxLayout.SetDefaultConstraint)
 
             meta_label = QLabel(f"{sender} • {dt.strftime('%H:%M')}")
             meta_label.setStyleSheet('font-size: 9pt; font-style: italic; color: #666666;')
@@ -188,7 +184,7 @@ class ChatViewer(QMainWindow):
             message_content.setWordWrap(True)
             message_content.setTextInteractionFlags(Qt.TextSelectableByMouse)
             message_content.setStyleSheet('color: #000000;')
-            message_content.setProperty('is_message', True) # Mark as message for reflow
+            message_content.setProperty('is_message', True)
             message_content.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.MinimumExpanding)
 
             media_match = re.search(r'<attached: (.*?)>', text)
@@ -198,9 +194,9 @@ class ChatViewer(QMainWindow):
                 file_ext = os.path.splitext(file_name)[1].lower()
                 if file_ext in IMAGE_EXT and os.path.exists(file_path):
                     pixmap = QPixmap(file_path)
-                    target_width = int(self.scroll_area.viewport().width() * 0.3) # Slightly smaller for regular images
+                    target_width = int(self.scroll_area.viewport().width() * 0.3)
                     if file_ext == '.webp':
-                        target_width = int(self.scroll_area.viewport().width() * 0.1) # Smaller for stickers
+                        target_width = int(self.scroll_area.viewport().width() * 0.1)
                     scaled_pixmap = pixmap.scaledToWidth(
                         target_width, Qt.SmoothTransformation
                     )
@@ -214,9 +210,9 @@ class ChatViewer(QMainWindow):
                         from moviepy.editor import VideoFileClip
                         import tempfile
                         thumbnail_path = os.path.join(tempfile.gettempdir(), f"thumb_{os.path.basename(file_path)}.jpg")
-                        # Use a context manager to ensure the clip is closed
+                        
                         with VideoFileClip(file_path) as clip:
-                            # Get a frame at 1 second
+                            
                             if clip.duration > 1:
                                 frame_time = 1
                             else:
@@ -226,7 +222,7 @@ class ChatViewer(QMainWindow):
 
                         if os.path.exists(thumbnail_path):
                             pixmap = QPixmap(thumbnail_path)
-                            target_width = int(self.scroll_area.viewport().width() * 0.4)  # Adjust size as needed
+                            target_width = int(self.scroll_area.viewport().width() * 0.4)
                             scaled_pixmap = pixmap.scaledToWidth(target_width, Qt.SmoothTransformation)
                             thumbnail_label = QLabel()
                             thumbnail_label.setPixmap(scaled_pixmap)
@@ -269,10 +265,10 @@ class ChatViewer(QMainWindow):
                     text.replace('\u202f', ' ').replace('\xa0', ' ').replace('\u200e', ''))
                 bubble_layout.addWidget(message_content)
 
-            # Ensure the bubble's layout adjusts to the content
+            
             bubble_layout.invalidate()
             bubble.adjustSize()
-            bubble.setMinimumHeight(bubble.height())  # Set minimum height to current height
+            bubble.setMinimumHeight(bubble.height())
 
             alignment = Qt.AlignRight if is_me else Qt.AlignLeft
             self.scroll_layout.addWidget(bubble, alignment=alignment)
@@ -280,17 +276,17 @@ class ChatViewer(QMainWindow):
 
         self.index = end
 
-        # Restore the scroll position to maintain the user's place
+        
         QTimer.singleShot(0, lambda: self._restore_scroll_position(
             max_scroll_value_before_load, items_added))
 
-        # Prune oldest widgets to keep UI responsive
+        
         widgets_to_remove = self.scroll_layout.count() - MAX_VISIBLE
         for i in range(widgets_to_remove):
             item = self.scroll_layout.takeAt(0)
             if item and item.widget():
                 widget = item.widget()
-                removed_height += widget.height() + self.scroll_layout.spacing()  # Account for spacing
+                removed_height += widget.height() + self.scroll_layout.spacing()
                 widget.deleteLater()
 
         if removed_height > 0:
@@ -310,23 +306,23 @@ class ChatViewer(QMainWindow):
         current_value = scroll_bar.value()
 
         if max_after > max_before:
-            # Calculate the relative scroll position (percentage)
+            
             relative_position = 0.0
             if max_before > 0:
                 relative_position = current_value / max_before
 
-            # Calculate the new absolute scroll position
+            
             new_scroll_value = int(relative_position * max_after)
 
-            # Set the new scroll value
+            
             scroll_bar.setValue(new_scroll_value)
         elif max_after > max_before and current_value == max_before and items_added > 0:
-            # If we were at the bottom, stay at the bottom
+            
             scroll_bar.setValue(max_after)
 
 
 
-# --- Main Execution ---
+
 def main():
     parser = argparse.ArgumentParser(description='WhatsApp Chat Viewer')
     parser.add_argument('folder', help='Path to extracted chat folder')
@@ -337,7 +333,7 @@ def main():
     if not txt_files:
         print('Error: No .txt chat file found.')
         sys.exit(1)
-    chat_file = os.path.join(args.folder, txt_files[-1]) # Assuming the last .txt file is the main chat
+    chat_file = os.path.join(args.folder, txt_files[-1])
 
     # --- Loading Indicator ---
     def show_loading_bar(progress, total):
@@ -360,7 +356,7 @@ def main():
         show_loading_bar(parsed_count, total_lines)
 
     print("\nChat parsing complete. Opening UI...")
-    # --- End Loading Indicator ---
+    
 
     app = QApplication(sys.argv)
 
@@ -369,10 +365,10 @@ def main():
 
     app.aboutToQuit.connect(on_about_to_quit)
 
-    viewer = ChatViewer(chat_file, args.me_name, initial_messages=messages) # Pass pre-parsed messages
+    viewer = ChatViewer(chat_file, args.me_name, initial_messages=messages)
     viewer.show()
-    exit_code = app.exec() # Store the exit code
-    return exit_code # Return the exit code
+    exit_code = app.exec()
+    return exit_code
 
 
 if __name__ == '__main__':
