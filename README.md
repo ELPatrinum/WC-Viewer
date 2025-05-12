@@ -33,6 +33,16 @@ Ensure you have Python 3.7+ installed.
 ```bash
 pip install PySide6 pandas moviepy
 ```
+### Download the Script
+
+```bash
+git clone https://github.com/ELPatrinum/WC-Viewer.git
+```
+### Get into the Script directory 
+
+```bash
+cd WC-Viewer
+```
 
 ---
 
