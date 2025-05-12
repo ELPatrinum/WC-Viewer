@@ -1,9 +1,12 @@
 # WC-Viewer
 # WhatsApp Chat Viewer
+![ChatGPT Image May 12, 2025, 09_53_58 AM](https://github.com/user-attachments/assets/1796ce4c-237e-42c7-9da2-08efc8c4b8ce)
 
 ## Overview
 
 WhatsApp Chat Viewer is a Python-based desktop application built with PySide6, designed to provide an easy-to-use graphical interface for viewing WhatsApp chat exports. It supports displaying text messages, images, videos, and audio files directly within the chat interface.
+
+![May 12, 2025, 09_49_30 AM](https://github.com/user-attachments/assets/bf8e7c0a-c716-499f-b789-8b01a24aa554)
 
 ---
 
