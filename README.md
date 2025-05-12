@@ -59,9 +59,12 @@ python vchat.py /path/to/chat/folder --me "Your Name"
 
 ---
 
-![Screenshot 2025-05-12 094258](https://github.com/user-attachments/assets/7e46b9a1-b4e4-4c6a-a50e-68437f97211c)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7e46b9a1-b4e4-4c6a-a50e-68437f97211c" alt="Screenshot 2025-05-12 094258" />
+</p>
 
 ---
+
 
 ## Supported Media Formats
 
