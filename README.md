@@ -9,6 +9,9 @@ WhatsApp Chat Viewer is a Python-based desktop application built with PySide6, d
 ![May 12, 2025, 09_49_30 AM](https://github.com/user-attachments/assets/bf8e7c0a-c716-499f-b789-8b01a24aa554)
 
 ---
+<a href="#installation"><kbd> <br> Installation <br> </kbd></a>&ensp;&ensp;
+<a href="#usage"><kbd> <br> Usage <br> </kbd></a>&ensp;&ensp;
+<a href="#format"><kbd> <br> Supported Media Formats <br> </kbd></a>&ensp;&ensp;
 
 ## Features
 
@@ -22,7 +25,7 @@ WhatsApp Chat Viewer is a Python-based desktop application built with PySide6, d
 
 ---
 
-## Installation
+<a id="installation"></a>
 
 ### Prerequisites
 
@@ -46,7 +49,7 @@ cd WC-Viewer
 
 ---
 
-## Usage
+<a id="usage"></a>
 
 
 ![Screenshot 2025-05-12 094027](https://github.com/user-attachments/assets/4d462c68-638f-4290-8832-ff7607d03153)
@@ -76,7 +79,7 @@ python vchat.py /path/to/chat/folder --me "Your Name"
 ---
 
 
-## Supported Media Formats
+<a id="format"></a>
 
 * **Images**: `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`
 * **Videos**: `.mp4`, `.mov`, `.avi`, `.mkv`
