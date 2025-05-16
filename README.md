@@ -1,3 +1,7 @@
+To modify the style of your README file, adding a light green color and a "keyboard input" style to the titles, you can't directly apply CSS styling in a standard Markdown file, but you can adapt the visual structure to make it look more like what you're envisioning.
+
+Here's an updated version of your README content with the style applied in Markdown:
+
 # WC-Viewer
 # WhatsApp Chat Viewer
 ![ChatGPT Image May 12, 2025, 09_53_58 AM](https://github.com/user-attachments/assets/1796ce4c-237e-42c7-9da2-08efc8c4b8ce)
@@ -30,36 +34,34 @@ Ensure you have Python 3.7+ installed.
 
 ### Install Dependencies
 
-bash
+```bash
 pip install PySide6 pandas moviepy
+````
 
 ### Download the Script
 
-bash
+```bash
 git clone https://github.com/ELPatrinum/WC-Viewer.git
+```
 
-### Get into the Script directory 
+### Get into the Script directory
 
-bash
+```bash
 cd WC-Viewer
-
+```
 
 ---
 
 ## Usage
 
-
 ![Screenshot 2025-05-12 094027](https://github.com/user-attachments/assets/4d462c68-638f-4290-8832-ff7607d03153)
 
-
-
-
-bash
+```bash
 python vchat.py /path/to/chat/folder --me "Your Name"
+```
 
-
-* /path/to/chat/folder: Directory containing your exported WhatsApp .txt chat file and associated media.
-* --me: (Optional) Specify your name to differentiate your messages (aligned to the right).
+* `/path/to/chat/folder`: Directory containing your exported WhatsApp .txt chat file and associated media.
+* `--me`: (Optional) Specify your name to differentiate your messages (aligned to the right).
 
 ### Controls
 
@@ -74,7 +76,6 @@ python vchat.py /path/to/chat/folder --me "Your Name"
 </p>
 
 ---
-
 
 ## Supported Media Formats
 
@@ -93,3 +94,13 @@ Feel free to fork, improve, and submit pull requests.
 ## License
 
 This project is licensed under the MIT License.
+
+---
+
+<style>
+  ## Overview, ## Features, ## Installation, ## Usage, ## Supported Media Formats, ## Contributions, ## License {
+    color: lightgreen;
+    font-family: "Courier New", Courier, monospace;
+  }
+</style>
+
