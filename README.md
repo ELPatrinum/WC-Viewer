@@ -22,7 +22,7 @@ WhatsApp Chat Viewer is a Python-based desktop application built with PySide6, d
 
 ---
 
-## Installation
+<a href="#installation"><kbd> <br> Installation <br> </kbd></a>&ensp;&ensp;
 
 ### Prerequisites
 
